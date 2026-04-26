@@ -69,22 +69,28 @@ class DeleteAlertView(generics.DestroyAPIView):
 # ROUTE APIs
 
 class CreateRouteView(generics.CreateAPIView):
-    queryset = Route.objects.all()
     serializer_class = RouteSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class ListRouteView(generics.ListAPIView):
-    queryset = Route.objects.all()
     serializer_class = RouteSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Route.objects.all()
 
 
 # PRICE SNAPSHOT APIs
 
 class CreatePriceSnapshotView(generics.CreateAPIView):
-    queryset = PriceSnapshot.objects.all()
     serializer_class = PriceSnapshotSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class ListPriceSnapshotView(generics.ListAPIView):
-    queryset = PriceSnapshot.objects.all()
     serializer_class = PriceSnapshotSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return PriceSnapshot.objects.all()
